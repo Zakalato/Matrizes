@@ -1,0 +1,72 @@
+//Elabore um programa que declare uma matriz de números inteiros de dimensões 4 linhas × 3 colunas (matriz[4][3]).
+
+Cada linha representa um aluno e cada coluna representa uma nota.
+
+O programa deverá:
+
+Ler todas as notas da matriz;
+Exibir a matriz completa;
+Calcular a média de cada aluno (cada linha);
+Informar qual aluno obteve a maior média.
+
+
+
+
+
+
+package Matrizes;
+
+import java.util.Scanner;
+
+public class Exercicio_6 {
+    static double maiorMedia = 0;
+    static int maiorAluno = 0;
+	
+	public static void preencheMatriz (double [] [] matriz, Scanner s) {
+		for(int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+                System.out.println("Informe a " + (j + 1) + "ª nota do " + (i + 1) + "º aluno:");
+				matriz [i] [j] = s.nextDouble();
+			}
+		}
+	}
+	
+	public static void ImprimeMatriz (double [] [] matriz) {
+		for(int i = 0; i < matriz.length; i++) {
+            System.out.print("Notas do Aluno " + (i + 1) + ": ");
+			for (int j = 0; j < matriz[i].length; j++) {
+				System.out.print(matriz[i][j] + " " );
+			
+			}
+			System.out.println();
+		}
+		
+	}
+    public static void CalcularMediaPorLinhas (double [] [] matriz) {
+        for(int i = 0; i < matriz.length; i++) {
+            double soma = 0;
+            for (int j = 0; j < matriz[i].length; j++) {
+                soma += matriz[i][j];
+            }
+            double media = soma / matriz[i].length;
+            System.out.printf("A média do " + (i + 1) + "º aluno é: %.2f\n", media);
+            if (media > maiorMedia) {
+                maiorMedia = media;
+                maiorAluno = i + 1;
+            }
+        }
+    }
+	
+	
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		
+		double[] [] matriz = new double [4] [3];
+		preencheMatriz(matriz,s);
+		ImprimeMatriz(matriz);
+		CalcularMediaPorLinhas(matriz);
+		System.out.printf("O aluno com a maior média é o " + maiorAluno + "º aluno com média: %.2f\n", maiorMedia);
+        s.close();
+	}
+
+}
