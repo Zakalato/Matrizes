@@ -1,0 +1,55 @@
+package Matrizes;
+import java.util.Scanner;
+public class Exercicio_4 {
+    static int contador = 0;
+    public static void preencheMatriz (int [][] matriz, Scanner s) {
+        for(int i = 0; i < matriz.length;i++) {
+            for(int j = 0; j < matriz[i].length;j++) {
+                System.out.println("Informe o valor da posição [" + i + "][" + j + "]");
+                matriz[i][j] = s.nextInt();
+            }
+        }
+    }
+
+    public static void Ehprimo (int [][] matriz) {
+        for(int i = 0; i < matriz.length;i++) {
+            for(int j = 0; j < matriz[i].length;j++) {
+                int num = matriz[i][j];
+                boolean EhPrimo = true;
+                if (num <= 1) {
+                    EhPrimo = false;
+                } else {
+                    for (int k = 2; k <= Math.sqrt(num); k++) {
+                        if (num % k == 0) {
+                            EhPrimo = false;
+                            break;
+                        }
+                    }
+                }
+                if (EhPrimo) {
+                    contador++;
+                }
+            }  
+        }
+    }
+
+    public static void ImprimeMatriz (int [][] matriz) {
+        for(int i = 0; i < matriz.length;i++) {
+            for(int j = 0; j < matriz[i].length;j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("A quantidade de números primos na matriz é: " + contador);
+    }
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int [][] matriz = new int[2][2];
+        preencheMatriz(matriz, s);
+        Ehprimo(matriz);
+        ImprimeMatriz(matriz);
+        s.close();
+    }
+
+}
