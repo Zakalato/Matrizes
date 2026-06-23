@@ -1,0 +1,47 @@
+package Matrizes;
+import java.util.Scanner;
+
+public class Exercicio_1 {
+
+    static int MaiorValor = Integer.MIN_VALUE;
+    static int MenorValor = Integer.MAX_VALUE;
+
+
+    public static void PreencherMatriz(int [][] matriz, Scanner s) {
+        for(int i = 0; i < matriz.length; i++) {
+            for(int j = 0; j < matriz[i].length; j++) {
+                System.out.println("Informe o valor da posição [" + i + "][" + j + "]");
+                matriz[i][j] = s.nextInt();
+
+                if (matriz[i][j] > MaiorValor) {
+                    MaiorValor = matriz[i][j];
+                }
+                if (matriz[i][j] < MenorValor) {
+                    MenorValor = matriz[i][j];
+                }
+
+            }
+        }
+    }
+    
+    public static void ImprimirMatriz(int [][] matriz) {
+        for(int i = 0; i < matriz.length; i++) {
+            for(int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+            
+        }
+        System.out.println("Maior valor: " + MaiorValor);
+        System.out.println("Menor valor: " + MenorValor);
+    }
+        
+     
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int [][] matriz = new int[2][2];
+        PreencherMatriz(matriz, s);
+        ImprimirMatriz(matriz);   
+
+    }
+}
